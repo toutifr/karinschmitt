@@ -83,7 +83,18 @@
   .hops button,.gdel{border:none;background:none;color:var(--muted);cursor:pointer;padding:3px 6px;font-size:.9rem}
   .hops button:hover,.gdel:hover{color:var(--accent)}
   .hops button.del:hover,.gdel:hover{color:#b3261e}
-  figure.hist-item .ph.click, figure.hist-item img.click{cursor:pointer}
+  .pstrip{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0 4px 72px}
+  .pstrip .pt{position:relative;width:40px;height:40px;border:none;background:none;padding:0}
+  .pstrip .pt img{width:40px;height:40px;object-fit:cover;border-radius:3px;display:block}
+  .pstrip .pt .px,.pstrip .pt .pl{position:absolute;border:none;border-radius:50%;width:17px;height:17px;display:none;align-items:center;justify-content:center;cursor:pointer;padding:0;background:rgba(43,39,36,.85);color:#fff}
+  .pstrip .pt .px{top:-6px;right:-6px}
+  .pstrip .pt .px:hover{background:#b3261e}
+  .pstrip .pt .pl{bottom:-6px;left:-6px}
+  .pstrip .pt .pl:hover{background:var(--accent)}
+  .pstrip .pt:hover .px,.pstrip .pt:hover .pl{display:flex}
+  .pstrip .pt .px svg,.pstrip .pt .pl svg{width:9px;height:9px}
+  .pstrip .padd{border:1px dashed #d8cbb8;border-radius:3px;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .pstrip .padd:hover{border-color:var(--accent);color:var(--accent)}
   .btn2{border:1px dashed #d8cbb8;background:none;color:var(--muted);padding:6px 14px;font-size:.8rem;border-radius:3px;cursor:pointer;font-family:var(--sans);margin-top:10px}
   .btn2:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -298,21 +309,36 @@ function renderHist(cat){
       +'<button class="gdel" title="Supprimer le groupe" onclick="delGroup(\''+cat+'\','+gi+')">'+IC.x+'</button>';
     d.appendChild(h);
     g.items.forEach(function(it,ii){
+      it.photos=it.photos||(it.src?[it.src]:[]);delete it.src;
       var f=document.createElement('figure');f.className='hist-item';
-      var im=it.src
-        ?'<img class="click" title="Changer la photo" src="'+esc(it.src)+'" onclick="setItemPhoto(\''+cat+'\','+gi+','+ii+')">'
-        :'<span class="ph click" title="Ajouter une photo" onclick="setItemPhoto(\''+cat+'\','+gi+','+ii+')">✦</span>';
+      var im=it.photos.length
+        ?'<img src="'+esc(it.photos[0])+'" title="Première photo = vignette">'
+        :'<span class="ph">✦</span>';
       f.innerHTML=im
         +'<span class="hitl">'
         +'<input value="'+esc(it.titre)+'" placeholder="Titre" oninput="C.historique[\''+cat+'\']['+gi+'].items['+ii+'].titre=this.value">'
-        +'<input class="leg" value="'+esc(it.legende)+'" placeholder="Légende de la photo (optionnelle)" oninput="C.historique[\''+cat+'\']['+gi+'].items['+ii+'].legende=this.value">'
+        +'<input class="leg" value="'+esc(it.legende)+'" placeholder="Légende affichée dans la galerie (optionnelle)" oninput="C.historique[\''+cat+'\']['+gi+'].items['+ii+'].legende=this.value">'
         +'</span>'
         +'<span class="hops">'
         +'<button title="Monter" onclick="moveItem(\''+cat+'\','+gi+','+ii+',-1)">'+IC.up+'</button>'
         +'<button title="Descendre" onclick="moveItem(\''+cat+'\','+gi+','+ii+',1)">'+IC.down+'</button>'
-        +'<button class="del" title="Supprimer" onclick="delItem(\''+cat+'\','+gi+','+ii+')">'+IC.x+'</button>'
+        +'<button class="del" title="Supprimer la ligne" onclick="delItem(\''+cat+'\','+gi+','+ii+')">'+IC.x+'</button>'
         +'</span>';
       d.appendChild(f);
+      // galerie de la ligne (s'ouvre en lightbox sur le site)
+      var strip=document.createElement('div');strip.className='pstrip';
+      it.photos.forEach(function(p,pi){
+        var t=document.createElement('span');t.className='pt';
+        t.innerHTML='<img src="'+esc(p)+'">'
+          +'<button class="px" title="Retirer cette photo" onclick="delItemPhoto(\''+cat+'\','+gi+','+ii+','+pi+')">'+IC.x+'</button>'
+          +(pi>0?'<button class="pl" title="Avancer (la 1re sert de vignette)" onclick="moveItemPhoto(\''+cat+'\','+gi+','+ii+','+pi+')">'+IC.left+'</button>':'');
+        strip.appendChild(t);
+      });
+      var addp=document.createElement('button');
+      addp.className='pt padd';addp.title='Ajouter une photo à la galerie de cette ligne';addp.innerHTML=IC.plus;
+      addp.onclick=function(){pickImage(function(src){it.photos.push(src);renderHist(cat)})};
+      strip.appendChild(addp);
+      d.appendChild(strip);
     });
     var add=document.createElement('button');
     add.className='btn2';add.textContent='+ Ajouter une ligne';
@@ -325,7 +351,8 @@ function addGroup(cat){C.historique[cat].push({groupe:'',periode:'',items:[]});r
 function delGroup(cat,gi){if(!confirm('Supprimer ce groupe et toutes ses lignes ?'))return;C.historique[cat].splice(gi,1);renderHist(cat)}
 function delItem(cat,gi,ii){C.historique[cat][gi].items.splice(ii,1);renderHist(cat)}
 function moveItem(cat,gi,ii,d){var a=C.historique[cat][gi].items,j=ii+d;if(j<0||j>=a.length)return;var t=a[ii];a[ii]=a[j];a[j]=t;renderHist(cat)}
-function setItemPhoto(cat,gi,ii){pickImage(function(src){C.historique[cat][gi].items[ii].src=src;renderHist(cat)})}
+function delItemPhoto(cat,gi,ii,pi){C.historique[cat][gi].items[ii].photos.splice(pi,1);renderHist(cat)}
+function moveItemPhoto(cat,gi,ii,pi){var a=C.historique[cat][gi].items[ii].photos;var t=a[pi];a[pi]=a[pi-1];a[pi-1]=t;renderHist(cat)}
 
 /* ---------- upload photo (redimensionnée puis committée sur GitHub) ---------- */
 function pickImage(cb){

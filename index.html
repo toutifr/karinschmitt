@@ -70,6 +70,9 @@
   figure.hist-item img{width:56px;height:56px;object-fit:cover;border-radius:3px;flex-shrink:0}
   figure.hist-item .ph{width:56px;height:56px;border-radius:3px;flex-shrink:0;background:#ece5da;display:flex;align-items:center;justify-content:center;color:#c4b8a8;font-size:1.1rem}
   figure.hist-item figcaption{text-transform:none;letter-spacing:0;font-size:.98rem;color:var(--ink);text-align:left;margin:0}
+  figure.hist-item.has-g{cursor:zoom-in}
+  figure.hist-item.has-g:hover figcaption{color:var(--accent)}
+  .gcount{font-size:.72rem;color:var(--muted);letter-spacing:.06em;white-space:nowrap}
   .hist-toggle{background:none;border:none;color:var(--accent);font-family:var(--sans);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;padding:14px 0 0;opacity:.85}
   .hist-toggle:hover{opacity:1;background:none}
 
@@ -215,34 +218,49 @@
           +'<figcaption>'+esc(p.legende)+'</figcaption></figure>';
       }).join('');
     });
-    // historique
+    // historique (chaque ligne peut porter une galerie → lightbox)
     ['evenements','stages'].forEach(function(cat){
       var host=document.getElementById('hist-'+cat);
       host.querySelectorAll('.hist-group,.hist-toggle').forEach(function(n){n.remove()});
       (C.historique[cat]||[]).forEach(function(g){
         var d=document.createElement('div');d.className='hist-group';
-        d.innerHTML='<h4>'+esc(g.groupe)+(g.periode?' · '+esc(g.periode):'')+'</h4>'
-          +(g.items||[]).map(function(it){
-            var im=it.src?'<img src="'+esc(it.src)+'" alt="'+esc(it.legende||it.titre)+'" title="'+esc(it.legende)+'" loading="lazy">':'<span class="ph">✦</span>';
-            return '<figure class="hist-item">'+im+'<figcaption>'+esc(it.titre)+'</figcaption></figure>';
-          }).join('');
+        d.innerHTML='<h4>'+esc(g.groupe)+(g.periode?' · '+esc(g.periode):'')+'</h4>';
+        (g.items||[]).forEach(function(it){
+          var photos=it.photos||(it.src?[it.src]:[]);
+          var f=document.createElement('figure');
+          f.className='hist-item'+(photos.length?' has-g':'');
+          var im=photos.length?'<img src="'+esc(photos[0])+'" alt="'+esc(it.legende||it.titre)+'" loading="lazy">':'<span class="ph">✦</span>';
+          f.innerHTML=im+'<figcaption>'+esc(it.titre)+(photos.length>1?' <span class="gcount">'+photos.length+' photos</span>':'')+'</figcaption>';
+          if(photos.length){
+            f.addEventListener('click',function(){
+              openLb(photos.map(function(p){return {src:p,cap:it.titre+(it.legende?' — '+it.legende:'')}}),0);
+            });
+          }
+          d.appendChild(f);
+        });
         host.appendChild(d);
       });
     });
     initLightbox();initToggles();
   }
 
-  /* ---------- lightbox (galeries uniquement) ---------- */
-  var lb=document.getElementById('lb'),lbImg=lb.querySelector('img'),lbCap=lb.querySelector('.lb-cap'),figs=[],cur=0;
+  /* ---------- lightbox (galeries + historique) ---------- */
+  var lb=document.getElementById('lb'),lbImg=lb.querySelector('img'),lbCap=lb.querySelector('.lb-cap'),slides=[],cur=0;
   function show(i){
-    cur=(i+figs.length)%figs.length;
-    lbImg.src=figs[cur].querySelector('img').src;
-    lbCap.textContent=figs[cur].querySelector('figcaption').textContent;
+    if(!slides.length)return;
+    cur=(i+slides.length)%slides.length;
+    lbImg.src=slides[cur].src;
+    lbCap.textContent=slides[cur].cap;
     lb.classList.add('open');
   }
+  function openLb(list,i){slides=list;show(i)}
   function initLightbox(){
-    figs=[].slice.call(document.querySelectorAll('.grid figure'));
-    figs.forEach(function(f,i){f.addEventListener('click',function(){show(i)})});
+    var figs=[].slice.call(document.querySelectorAll('.grid figure'));
+    figs.forEach(function(f,i){
+      f.addEventListener('click',function(){
+        openLb(figs.map(function(g){return {src:g.querySelector('img').src,cap:g.querySelector('figcaption').textContent}}),i);
+      });
+    });
   }
   lb.querySelector('.lb-close').addEventListener('click',function(){lb.classList.remove('open')});
   lb.querySelector('.lb-prev').addEventListener('click',function(e){e.stopPropagation();show(cur-1)});
