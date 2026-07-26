@@ -45,6 +45,9 @@ module.exports = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST uniquement' });
 
   const { email, password, action, data, filename } = req.body || {};
+  if (!process.env.ADMIN_EMAIL || !process.env.ADMIN_PASSWORD) {
+    return res.status(500).json({ error: 'Variables ADMIN_EMAIL / ADMIN_PASSWORD absentes côté serveur (.env non chargé ?)' });
+  }
   const norm = s => String(s || '').trim();
   const okAuth = eq(norm(email).toLowerCase(), norm(process.env.ADMIN_EMAIL).toLowerCase())
               && eq(norm(password), norm(process.env.ADMIN_PASSWORD));
