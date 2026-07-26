@@ -70,6 +70,19 @@
   button:hover{background:#823b2f}
 
   footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--muted);font-size:.85rem;letter-spacing:.06em}
+
+  .grid figure{cursor:zoom-in}
+  .lb{position:fixed;inset:0;z-index:100;background:rgba(30,26,23,.94);display:none;align-items:center;justify-content:center;flex-direction:column;padding:24px}
+  .lb.open{display:flex}
+  .lb img{max-width:min(92vw,1000px);max-height:78vh;border-radius:4px;box-shadow:0 10px 50px rgba(0,0,0,.5)}
+  .lb-cap{color:#e8e0d5;font-family:var(--serif);font-style:italic;font-size:1.15rem;margin-top:18px;letter-spacing:.04em}
+  .lb button{position:absolute;background:none;border:none;color:#e8e0d5;cursor:pointer;padding:16px;font-family:var(--sans);opacity:.7;transition:opacity .2s;letter-spacing:0;text-transform:none}
+  .lb button:hover{opacity:1;background:none}
+  .lb-close{top:14px;right:18px;font-size:2rem;line-height:1}
+  .lb-prev,.lb-next{top:50%;transform:translateY(-50%);font-size:2.6rem}
+  .lb-prev{left:10px}
+  .lb-next{right:10px}
+  @media(max-width:600px){.lb-prev{left:0}.lb-next{right:0}.lb img{max-width:96vw}}
 </style>
 </head>
 <body>
@@ -180,6 +193,38 @@
   <div class="wrap">Karin Schmitt — Céramiques &amp; porcelaines peintes</div>
 </footer>
 
+<div class="lb" id="lb" role="dialog" aria-label="Visionneuse d'images">
+  <button class="lb-close" aria-label="Fermer">×</button>
+  <button class="lb-prev" aria-label="Précédente">‹</button>
+  <img alt="">
+  <p class="lb-cap"></p>
+  <button class="lb-next" aria-label="Suivante">›</button>
+</div>
+
+<script>
+(function(){
+  var figs=[].slice.call(document.querySelectorAll('.grid figure')),
+      lb=document.getElementById('lb'),
+      im=lb.querySelector('img'), cap=lb.querySelector('.lb-cap'), cur=0;
+  function show(i){
+    cur=(i+figs.length)%figs.length;
+    im.src=figs[cur].querySelector('img').src;
+    cap.textContent=figs[cur].querySelector('figcaption').textContent;
+    lb.classList.add('open');
+  }
+  figs.forEach(function(f,i){f.addEventListener('click',function(){show(i)})});
+  lb.querySelector('.lb-close').addEventListener('click',function(){lb.classList.remove('open')});
+  lb.querySelector('.lb-prev').addEventListener('click',function(e){e.stopPropagation();show(cur-1)});
+  lb.querySelector('.lb-next').addEventListener('click',function(e){e.stopPropagation();show(cur+1)});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('open')});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')lb.classList.remove('open');
+    if(e.key==='ArrowLeft')show(cur-1);
+    if(e.key==='ArrowRight')show(cur+1);
+  });
+})();
+</script>
 <script>
 (function(){
   // adresse assemblée à l'exécution pour éviter les robots collecteurs
