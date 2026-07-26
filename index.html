@@ -71,6 +71,16 @@
 
   footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--muted);font-size:.85rem;letter-spacing:.06em}
 
+  .hist{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;max-width:900px;margin:56px auto 0}
+  @media(max-width:720px){.hist{grid-template-columns:1fr}}
+  .hist h3{font-family:var(--serif);font-size:1.5rem;font-weight:600;margin-bottom:10px}
+  figure.hist-item{display:flex;align-items:center;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);cursor:zoom-in}
+  figure.hist-item.no-img{cursor:default}
+  figure.hist-item img{width:56px;height:56px;object-fit:cover;border-radius:3px;flex-shrink:0}
+  figure.hist-item .ph{width:56px;height:56px;border-radius:3px;flex-shrink:0;background:#ece5da;display:flex;align-items:center;justify-content:center;color:#c4b8a8;font-size:1.1rem}
+  figure.hist-item figcaption{text-transform:none;letter-spacing:0;font-size:.98rem;color:var(--ink);text-align:left;margin:0}
+  .hist-year{margin-left:auto;color:var(--muted);font-size:.82rem;letter-spacing:.1em;white-space:nowrap;padding-left:12px}
+
   .grid figure{cursor:zoom-in}
   .lb{position:fixed;inset:0;z-index:100;background:rgba(30,26,23,.94);display:none;align-items:center;justify-content:center;flex-direction:column;padding:24px}
   .lb.open{display:flex}
@@ -167,6 +177,28 @@
         <p>Retrouvez-moi lors des marchés de Noël alsaciens et à l’Écomusée d’Alsace, à l’occasion du grand week-end des Arts du feu, pour partager le plaisir du décor sur porcelaine et de la céramique dans l’atelier du potier.</p>
       </div>
     </div>
+
+    <div class="hist">
+      <div>
+        <h3>Évènements passés</h3>
+        <figure class="hist-item"><img src="images/hist-atelier.jpg" alt=""><figcaption>Stages à l’atelier</figcaption><span class="hist-year">2024</span></figure>
+        <figure class="hist-item"><img src="images/hist-ecomusee2023.jpg" alt=""><figcaption>Écomusée d’Alsace · Les Arts du feu</figcaption><span class="hist-year">2023</span></figure>
+        <figure class="hist-item"><img src="images/noel.jpg" alt=""><figcaption>Marché de Noël de Turckheim</figcaption><span class="hist-year">2023</span></figure>
+        <figure class="hist-item"><img src="images/hist-noel2018.jpg" alt=""><figcaption>Marchés de Noël · Riedisheim &amp; Ottmarsheim</figcaption><span class="hist-year">2018</span></figure>
+        <figure class="hist-item"><img src="images/hist-ecomusee2018.jpg" alt=""><figcaption>Écomusée d’Alsace · l’atelier du potier</figcaption><span class="hist-year">2018</span></figure>
+        <figure class="hist-item"><img src="images/hist-ecomusee2015.jpg" alt=""><figcaption>Écomusée d’Alsace · Les Arts du feu</figcaption><span class="hist-year">2015</span></figure>
+        <figure class="hist-item"><img src="images/hist-saison2016.jpg" alt=""><figcaption>Saison à l’atelier</figcaption><span class="hist-year">2015–2016</span></figure>
+        <figure class="hist-item"><img src="images/hist-noel2014.jpg" alt=""><figcaption>Noël · Riedisheim, Rixheim, Écomusée</figcaption><span class="hist-year">2014</span></figure>
+        <figure class="hist-item no-img"><span class="ph">✦</span><figcaption>Marché de Pâques · Riedisheim</figcaption><span class="hist-year">2014</span></figure>
+      </div>
+      <div>
+        <h3>Stages passés</h3>
+        <figure class="hist-item"><img src="images/hist-stages-adultes.jpg" alt=""><figcaption>Stages à l’atelier &amp; en association</figcaption><span class="hist-year">2017–2018</span></figure>
+        <figure class="hist-item"><img src="images/hist-stages-enfants.jpg" alt=""><figcaption>Stages enfants · découverte de la terre</figcaption><span class="hist-year">2015</span></figure>
+        <figure class="hist-item"><img src="images/coupe.jpg" alt=""><figcaption>Céramique pour débutants</figcaption><span class="hist-year">2014–2015</span></figure>
+        <figure class="hist-item no-img"><span class="ph">✦</span><figcaption>Stage enfants d’été · Hochstatt</figcaption><span class="hist-year">2014</span></figure>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -203,7 +235,7 @@
 
 <script>
 (function(){
-  var figs=[].slice.call(document.querySelectorAll('.grid figure')),
+  var figs=[].slice.call(document.querySelectorAll('.grid figure, figure.hist-item:not(.no-img)')),
       lb=document.getElementById('lb'),
       im=lb.querySelector('img'), cap=lb.querySelector('.lb-cap'), cur=0;
   function show(i){
