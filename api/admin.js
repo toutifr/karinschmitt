@@ -45,8 +45,9 @@ module.exports = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST uniquement' });
 
   const { email, password, action, data, filename } = req.body || {};
-  const okAuth = eq(email && email.trim().toLowerCase(), (process.env.ADMIN_EMAIL || '').toLowerCase())
-              && eq(password, process.env.ADMIN_PASSWORD);
+  const norm = s => String(s || '').trim();
+  const okAuth = eq(norm(email).toLowerCase(), norm(process.env.ADMIN_EMAIL).toLowerCase())
+              && eq(norm(password), norm(process.env.ADMIN_PASSWORD));
   if (!okAuth) return res.status(401).json({ error: 'Identifiants incorrects' });
 
   const repo = process.env.GITHUB_REPO;
