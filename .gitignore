@@ -1,2 +1,4 @@
 _to_delete/
 site.zip
+.vercel
+.env*
