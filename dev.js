@@ -6,18 +6,23 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-// --- charge .env ---
-const envPath = path.join(__dirname, '.env');
-if (fs.existsSync(envPath)) {
-  fs.readFileSync(envPath, 'utf8').split('\n').forEach(line => {
+// --- charge .env / .env.local ---
+let envLoaded = false;
+['.env', '.env.local'].forEach(name => {
+  const p = path.join(__dirname, name);
+  if (!fs.existsSync(p)) return;
+  envLoaded = true;
+  fs.readFileSync(p, 'utf8').split('\n').forEach(line => {
     const m = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)\s*$/);
     if (m && !line.trim().startsWith('#')) {
       process.env[m[1]] = m[2].replace(/^["']|["']$/g, '');
     }
   });
-  console.log('✓ .env chargé (' + ['ADMIN_EMAIL','ADMIN_PASSWORD','GITHUB_TOKEN','GITHUB_REPO'].filter(k => process.env[k]).join(', ') + ')');
+});
+if (envLoaded) {
+  console.log('✓ variables chargées : ' + ['ADMIN_EMAIL','ADMIN_PASSWORD','GITHUB_TOKEN','GITHUB_REPO'].filter(k => process.env[k]).join(', '));
 } else {
-  console.log('⚠ Pas de fichier .env à la racine — /api/admin refusera les connexions.');
+  console.log('⚠ Aucun fichier .env ou .env.local à la racine — /api/admin refusera les connexions.');
 }
 
 const adminFn = require('./api/admin.js');
