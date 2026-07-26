@@ -79,7 +79,8 @@
   figure.hist-item .ph{width:56px;height:56px;border-radius:3px;flex-shrink:0;background:#ece5da;display:flex;align-items:center;justify-content:center;color:#c4b8a8;font-size:1.1rem}
   figure.hist-item figcaption{text-transform:none;letter-spacing:0;font-size:.98rem;color:var(--ink);text-align:left;margin:0}
   .hist-year{margin-left:auto;color:var(--muted);font-size:.82rem;letter-spacing:.1em;white-space:nowrap;padding-left:12px}
-  figure.hist-item.folded{display:none}
+  .hist-group h4{font-family:var(--sans);font-weight:500;font-size:.78rem;letter-spacing:.2em;color:var(--accent);margin:22px 0 2px}
+  .hist-group.folded{display:none}
   .hist-toggle{background:none;border:none;color:var(--accent);font-family:var(--sans);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;padding:14px 0 0;opacity:.85}
   .hist-toggle:hover{opacity:1;background:none}
 
@@ -183,22 +184,49 @@
     <div class="hist">
       <div>
         <h3>Évènements passés</h3>
-        <figure class="hist-item"><img src="images/hist-atelier.jpg" alt=""><figcaption>Stages à l’atelier</figcaption><span class="hist-year">2024</span></figure>
-        <figure class="hist-item"><img src="images/hist-ecomusee2023.jpg" alt=""><figcaption>Écomusée d’Alsace · Les Arts du feu</figcaption><span class="hist-year">2023</span></figure>
-        <figure class="hist-item"><img src="images/noel.jpg" alt=""><figcaption>Marché de Noël de Turckheim</figcaption><span class="hist-year">2023</span></figure>
-        <figure class="hist-item"><img src="images/hist-noel2018.jpg" alt=""><figcaption>Marchés de Noël · Riedisheim &amp; Ottmarsheim</figcaption><span class="hist-year">2018</span></figure>
-        <figure class="hist-item"><img src="images/hist-ecomusee2018.jpg" alt=""><figcaption>Écomusée d’Alsace · l’atelier du potier</figcaption><span class="hist-year">2018</span></figure>
-        <figure class="hist-item"><img src="images/hist-ecomusee2015.jpg" alt=""><figcaption>Écomusée d’Alsace · Les Arts du feu</figcaption><span class="hist-year">2015</span></figure>
-        <figure class="hist-item"><img src="images/hist-saison2016.jpg" alt=""><figcaption>Saison à l’atelier</figcaption><span class="hist-year">2015–2016</span></figure>
-        <figure class="hist-item"><img src="images/hist-noel2014.jpg" alt=""><figcaption>Noël · Riedisheim, Rixheim, Écomusée</figcaption><span class="hist-year">2014</span></figure>
-        <figure class="hist-item no-img"><span class="ph">✦</span><figcaption>Marché de Pâques · Riedisheim</figcaption><span class="hist-year">2014</span></figure>
+        <div class="hist-group">
+          <h4>2024</h4>
+          <figure class="hist-item"><img src="images/hist-atelier.jpg" alt=""><figcaption>Stages à l’atelier</figcaption></figure>
+        </div>
+        <div class="hist-group">
+          <h4>2023</h4>
+          <figure class="hist-item"><img src="images/hist-ecomusee2023.jpg" alt=""><figcaption>Écomusée d’Alsace · Les Arts du feu</figcaption></figure>
+          <figure class="hist-item"><img src="images/noel.jpg" alt=""><figcaption>Marché de Noël de Turckheim</figcaption></figure>
+        </div>
+        <div class="hist-group">
+          <h4>2018</h4>
+          <figure class="hist-item"><img src="images/hist-noel2018.jpg" alt=""><figcaption>Marchés de Noël · Riedisheim &amp; Ottmarsheim</figcaption></figure>
+          <figure class="hist-item"><img src="images/hist-ecomusee2018.jpg" alt=""><figcaption>Écomusée d’Alsace · l’atelier du potier</figcaption></figure>
+        </div>
+        <div class="hist-group">
+          <h4>2015 – 2016</h4>
+          <figure class="hist-item"><img src="images/hist-saison2016.jpg" alt=""><figcaption>Saison à l’atelier</figcaption></figure>
+          <figure class="hist-item"><img src="images/hist-ecomusee2015.jpg" alt=""><figcaption>Écomusée d’Alsace · Les Arts du feu</figcaption></figure>
+        </div>
+        <div class="hist-group">
+          <h4>2014</h4>
+          <figure class="hist-item"><img src="images/hist-noel2014.jpg" alt=""><figcaption>Noël · Riedisheim, Rixheim, Écomusée</figcaption></figure>
+          <figure class="hist-item no-img"><span class="ph">✦</span><figcaption>Marché de Pâques · Riedisheim</figcaption></figure>
+        </div>
       </div>
       <div>
         <h3>Stages passés</h3>
-        <figure class="hist-item"><img src="images/hist-stages-adultes.jpg" alt=""><figcaption>Stages à l’atelier &amp; en association</figcaption><span class="hist-year">2017–2018</span></figure>
-        <figure class="hist-item"><img src="images/hist-stages-enfants.jpg" alt=""><figcaption>Stages enfants · découverte de la terre</figcaption><span class="hist-year">2015</span></figure>
-        <figure class="hist-item"><img src="images/coupe.jpg" alt=""><figcaption>Céramique pour débutants</figcaption><span class="hist-year">2014–2015</span></figure>
-        <figure class="hist-item no-img"><span class="ph">✦</span><figcaption>Stage enfants d’été · Hochstatt</figcaption><span class="hist-year">2014</span></figure>
+        <div class="hist-group">
+          <h4>2017 – 2018</h4>
+          <figure class="hist-item"><img src="images/hist-stages-adultes.jpg" alt=""><figcaption>Stages à l’atelier &amp; en association</figcaption></figure>
+        </div>
+        <div class="hist-group">
+          <h4>2015</h4>
+          <figure class="hist-item"><img src="images/hist-stages-enfants.jpg" alt=""><figcaption>Stages enfants · découverte de la terre</figcaption></figure>
+        </div>
+        <div class="hist-group">
+          <h4>2014 – 2015</h4>
+          <figure class="hist-item"><img src="images/coupe.jpg" alt=""><figcaption>Céramique pour débutants</figcaption></figure>
+        </div>
+        <div class="hist-group">
+          <h4>2014</h4>
+          <figure class="hist-item no-img"><span class="ph">✦</span><figcaption>Stage enfants d’été · Hochstatt</figcaption></figure>
+        </div>
       </div>
     </div>
   </div>
@@ -248,16 +276,19 @@
   }
   figs.forEach(function(f,i){f.addEventListener('click',function(){show(i)})});
 
-  // listes historiques : 3 premières lignes visibles, le reste sous « Afficher plus »
+  // listes historiques : ~3 premières lignes visibles (par année), le reste sous « Afficher plus »
   [].slice.call(document.querySelectorAll('.hist > div')).forEach(function(col){
-    var items=[].slice.call(col.querySelectorAll('figure.hist-item'));
-    if(items.length<=3)return;
-    items.slice(3).forEach(function(it){it.classList.add('folded')});
+    var groups=[].slice.call(col.querySelectorAll('.hist-group')), n=0, folded=[];
+    groups.forEach(function(g){
+      if(n>=3){g.classList.add('folded');folded.push(g);}
+      n+=g.querySelectorAll('figure.hist-item').length;
+    });
+    if(!folded.length)return;
     var btn=document.createElement('button');
     btn.className='hist-toggle';btn.textContent='Afficher plus';
     btn.addEventListener('click',function(){
       var open=btn.textContent==='Afficher plus';
-      items.slice(3).forEach(function(it){it.classList.toggle('folded',!open)});
+      folded.forEach(function(g){g.classList.toggle('folded',!open)});
       btn.textContent=open?'Afficher moins':'Afficher plus';
     });
     col.appendChild(btn);
