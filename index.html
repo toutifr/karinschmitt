@@ -80,6 +80,9 @@
   figure.hist-item .ph{width:56px;height:56px;border-radius:3px;flex-shrink:0;background:#ece5da;display:flex;align-items:center;justify-content:center;color:#c4b8a8;font-size:1.1rem}
   figure.hist-item figcaption{text-transform:none;letter-spacing:0;font-size:.98rem;color:var(--ink);text-align:left;margin:0}
   .hist-year{margin-left:auto;color:var(--muted);font-size:.82rem;letter-spacing:.1em;white-space:nowrap;padding-left:12px}
+  figure.hist-item.folded{display:none}
+  .hist-toggle{background:none;border:none;color:var(--accent);font-family:var(--sans);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;padding:14px 0 0;opacity:.85}
+  .hist-toggle:hover{opacity:1;background:none}
 
   .grid figure{cursor:zoom-in}
   .lb{position:fixed;inset:0;z-index:100;background:rgba(30,26,23,.94);display:none;align-items:center;justify-content:center;flex-direction:column;padding:24px}
@@ -245,6 +248,21 @@
     lb.classList.add('open');
   }
   figs.forEach(function(f,i){f.addEventListener('click',function(){show(i)})});
+
+  // listes historiques : 3 premières lignes visibles, le reste sous « Afficher plus »
+  [].slice.call(document.querySelectorAll('.hist > div')).forEach(function(col){
+    var items=[].slice.call(col.querySelectorAll('figure.hist-item'));
+    if(items.length<=3)return;
+    items.slice(3).forEach(function(it){it.classList.add('folded')});
+    var btn=document.createElement('button');
+    btn.className='hist-toggle';btn.textContent='Afficher plus';
+    btn.addEventListener('click',function(){
+      var open=btn.textContent==='Afficher plus';
+      items.slice(3).forEach(function(it){it.classList.toggle('folded',!open)});
+      btn.textContent=open?'Afficher moins':'Afficher plus';
+    });
+    col.appendChild(btn);
+  });
   lb.querySelector('.lb-close').addEventListener('click',function(){lb.classList.remove('open')});
   lb.querySelector('.lb-prev').addEventListener('click',function(e){e.stopPropagation();show(cur-1)});
   lb.querySelector('.lb-next').addEventListener('click',function(e){e.stopPropagation();show(cur+1)});
