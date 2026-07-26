@@ -1,0 +1,87 @@
+{
+  "textes": {
+    "poeme": "S’imaginer, un instant de vie, une ambiance, un visage…<br>Penser un décor, un détail, une forme, une texture…<br>Doser la terre, un émail, la couleur, le feu…<br>Attendre… puis voir apparaître, figé par le feu, l’éclat, la couleur…<br>Observer la transformation, le mouvement, la symbiose des éléments…<br>Pour apprendre toujours des brisures, des coulures, des cassures…<strong>C’est le chemin que je vous propose ici.</strong>",
+    "porcelaine_intro": "Décors peints à la main sur porcelaine — collections et plaisirs personnalisés.",
+    "ceramique_intro": "Terre, émail, couleur et feu — pièces uniques façonnées à l’atelier.",
+    "stages_atelier_titre": "À l’atelier",
+    "stages_atelier": "Décors sur porcelaine et céramique, selon les idées de chacun ou autour d’un thème, par petits groupes de 3 ou 4 personnes. Des stages sont régulièrement organisés à l’atelier ou en association, au printemps et durant la période d’avant Noël. Débutants bienvenus, aucune connaissance préalable nécessaire.",
+    "stages_alsace_titre": "En Alsace",
+    "stages_alsace": "Retrouvez-moi lors des marchés de Noël alsaciens et à l’Écomusée d’Alsace, à l’occasion du grand week-end des Arts du feu, pour partager le plaisir du décor sur porcelaine et de la céramique dans l’atelier du potier.",
+    "contact_intro": "Une question, une envie de pièce personnalisée, une inscription à un stage ?"
+  },
+  "galeries": {
+    "porcelaine": [
+      { "src": "images/the.jpg", "legende": "Thé ou Expresso ?" },
+      { "src": "images/expresso.jpg", "legende": "Expresso" },
+      { "src": "images/japonaise.jpg", "legende": "Parfum d’Asie" },
+      { "src": "images/noir-et-blanc.jpg", "legende": "Couleur Noir & Blanc" },
+      { "src": "images/londres.jpg", "legende": "Café Londonien" },
+      { "src": "images/broderie.jpg", "legende": "Broderie d’Alsace" },
+      { "src": "images/ete.jpg", "legende": "Été ensoleillé" },
+      { "src": "images/noel.jpg", "legende": "Noël sous le sapin" },
+      { "src": "images/vase.jpg", "legende": "Vase graminées" }
+    ],
+    "ceramique": [
+      { "src": "images/poules.jpg", "legende": "Les poules" },
+      { "src": "images/oiseaux.jpg", "legende": "Oiseaux rigolos" },
+      { "src": "images/coupe.jpg", "legende": "Coupes" }
+    ]
+  },
+  "historique": {
+    "evenements": [
+      {
+        "groupe": "Écomusée d’Alsace",
+        "periode": "2014 – 2023",
+        "items": [
+          { "titre": "Les Arts du feu", "src": "images/hist-ecomusee2023.jpg", "legende": "" },
+          { "titre": "L’atelier du potier", "src": "images/hist-ecomusee2018.jpg", "legende": "" },
+          { "titre": "Boutique de l’Écomusée · Ungersheim", "src": "", "legende": "" }
+        ]
+      },
+      {
+        "groupe": "Marchés de Noël",
+        "periode": "2014 – 2023",
+        "items": [
+          { "titre": "Turckheim", "src": "images/noel.jpg", "legende": "" },
+          { "titre": "Saint-Nicolas · Riedisheim", "src": "images/hist-noel2018.jpg", "legende": "" },
+          { "titre": "Ottmarsheim", "src": "", "legende": "" },
+          { "titre": "Cité Hof · Riedisheim", "src": "images/hist-noel2014.jpg", "legende": "" },
+          { "titre": "Parc de la Commanderie · Rixheim", "src": "", "legende": "" }
+        ]
+      },
+      {
+        "groupe": "Marché de Pâques",
+        "periode": "2014",
+        "items": [
+          { "titre": "Cité Hof · Riedisheim", "src": "", "legende": "" }
+        ]
+      }
+    ],
+    "stages": [
+      {
+        "groupe": "À l’atelier",
+        "periode": "2015 – 2024",
+        "items": [
+          { "titre": "Décors sur porcelaine & céramique", "src": "images/hist-atelier.jpg", "legende": "" },
+          { "titre": "Saison à l’atelier", "src": "images/hist-saison2016.jpg", "legende": "" }
+        ]
+      },
+      {
+        "groupe": "Adultes",
+        "periode": "2014 – 2018",
+        "items": [
+          { "titre": "À l’atelier & en association", "src": "images/hist-stages-adultes.jpg", "legende": "" },
+          { "titre": "Céramique pour débutants", "src": "images/coupe.jpg", "legende": "" }
+        ]
+      },
+      {
+        "groupe": "Enfants",
+        "periode": "2014 – 2015",
+        "items": [
+          { "titre": "Découverte de la terre", "src": "images/hist-stages-enfants.jpg", "legende": "" },
+          { "titre": "Stage d’été · Hochstatt", "src": "", "legende": "" }
+        ]
+      }
+    ]
+  }
+}

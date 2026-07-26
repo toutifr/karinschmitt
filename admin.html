@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Back-office — Karin Schmitt</title>
+<meta name="robots" content="noindex,nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#faf7f2;--ink:#2b2724;--muted:#7d746b;--accent:#9c4a3c;--line:#e6ded3;--serif:'Cormorant Garamond',serif;--sans:'Jost',sans-serif}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.6}
+  .wrap{max-width:860px;margin:0 auto;padding:32px 20px 120px}
+  h1{font-family:var(--serif);font-size:1.9rem;font-weight:600;margin-bottom:4px}
+  h2{font-family:var(--serif);font-size:1.4rem;font-weight:600;margin:38px 0 14px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  h3{font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:22px 0 8px}
+  .hint{color:var(--muted);font-size:.85rem}
+  input[type=text],input[type=email],input[type=password]{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:3px;background:#fff;font-family:var(--sans);font-size:.95rem;color:var(--ink)}
+  input:focus,[contenteditable]:focus{outline:none;border-color:var(--accent)}
+  button{font-family:var(--sans);cursor:pointer;border:none;border-radius:3px;background:none}
+  .btn{background:var(--accent);color:#fff;padding:11px 26px;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase}
+  .btn:hover{background:#823b2f}
+  .btn2{border:1px solid var(--line);background:#fff;color:var(--ink);padding:7px 14px;font-size:.8rem}
+  .btn2:hover{border-color:var(--accent);color:var(--accent)}
+  .icon{color:var(--muted);font-size:.95rem;padding:4px 7px}
+  .icon:hover{color:var(--accent)}
+  .icon.del:hover{color:#b3261e}
+
+  /* login */
+  #login{max-width:360px;margin:14vh auto;display:grid;gap:14px;padding:0 20px}
+  #login p.err{color:#b3261e;font-size:.85rem;min-height:1.2em}
+
+  /* toolbar wysiwyg */
+  .field{margin-bottom:18px}
+  .field label{display:block;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .toolbar{display:flex;gap:2px;border:1px solid var(--line);border-bottom:none;border-radius:3px 3px 0 0;background:#f3eee6;padding:4px 6px}
+  .toolbar button{padding:3px 10px;font-size:.9rem;color:var(--ink);border-radius:2px}
+  .toolbar button:hover{background:#e8e0d3}
+  .toolbar b{font-weight:700}
+  [contenteditable]{border:1px solid var(--line);border-radius:0 0 3px 3px;background:#fff;padding:12px 14px;min-height:70px;font-size:.95rem}
+  [contenteditable].one{min-height:0}
+
+  /* galeries */
+  .glist{display:grid;gap:8px}
+  .grow{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:3px;padding:8px 10px}
+  .grow img{width:52px;height:52px;object-fit:cover;border-radius:3px;flex-shrink:0}
+  .grow input{border:none;padding:6px 4px}
+  .grow .ops{margin-left:auto;display:flex;flex-shrink:0}
+
+  /* historique */
+  .hgroup{background:#fff;border:1px solid var(--line);border-radius:3px;padding:14px;margin-bottom:14px}
+  .hgroup-head{display:flex;gap:10px;margin-bottom:10px;align-items:center}
+  .hgroup-head input{font-weight:400}
+  .hitem{display:flex;align-items:center;gap:10px;padding:6px 0;border-top:1px solid var(--line)}
+  .hitem img,.hitem .ph{width:44px;height:44px;object-fit:cover;border-radius:3px;flex-shrink:0;background:#ece5da}
+  .hitem input{border:none;padding:5px 4px}
+  .hitem .ops{margin-left:auto;display:flex;flex-shrink:0}
+
+  #savebar{position:fixed;bottom:0;left:0;right:0;background:rgba(250,247,242,.95);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:14px 20px;display:none;align-items:center;gap:16px;justify-content:center}
+  #status{font-size:.85rem;color:var(--muted)}
+  #app{display:none}
+  a.back{color:var(--muted);font-size:.85rem;text-decoration:none}
+  a.back:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div id="login">
+  <h1>Back-office</h1>
+  <p class="hint">Karin Schmitt — céramiques &amp; porcelaines</p>
+  <input type="email" id="l-email" placeholder="Adresse e-mail" autocomplete="username">
+  <input type="password" id="l-pass" placeholder="Mot de passe" autocomplete="current-password">
+  <p class="err" id="l-err"></p>
+  <button class="btn" id="l-go">Se connecter</button>
+</div>
+
+<div id="app" class="wrap">
+  <h1>Back-office</h1>
+  <p class="hint">Modifie puis clique « Enregistrer » — le site se met à jour en ligne au bout d’une minute environ. <a class="back" href="index.html" target="_blank">Voir le site ↗</a></p>
+
+  <h2>Textes</h2>
+  <div id="textes"></div>
+
+  <h2>Galerie Porcelaine</h2>
+  <div class="glist" id="gal-porcelaine"></div>
+  <p style="margin-top:10px"><button class="btn2" onclick="addPhoto('porcelaine')">+ Ajouter une photo</button></p>
+
+  <h2>Galerie Céramique</h2>
+  <div class="glist" id="gal-ceramique"></div>
+  <p style="margin-top:10px"><button class="btn2" onclick="addPhoto('ceramique')">+ Ajouter une photo</button></p>
+
+  <h2>Évènements passés</h2>
+  <div id="hist-evenements"></div>
+  <p><button class="btn2" onclick="addGroup('evenements')">+ Ajouter un groupe d’évènements</button></p>
+
+  <h2>Stages passés</h2>
+  <div id="hist-stages"></div>
+  <p><button class="btn2" onclick="addGroup('stages')">+ Ajouter un groupe de stages</button></p>
+</div>
+
+<div id="savebar">
+  <span id="status"></span>
+  <button class="btn" id="save">Enregistrer</button>
+</div>
+
+<input type="file" id="file" accept="image/*" style="display:none">
+
+<script>
+var C=null, creds=null;
+
+var FIELDS=[
+  ['poeme','Texte d’accueil (poème)',false],
+  ['porcelaine_intro','Intro Porcelaine',true],
+  ['ceramique_intro','Intro Céramique',true],
+  ['stages_atelier_titre','Stages — titre colonne 1',true],
+  ['stages_atelier','Stages — texte colonne 1',false],
+  ['stages_alsace_titre','Stages — titre colonne 2',true],
+  ['stages_alsace','Stages — texte colonne 2',false],
+  ['contact_intro','Intro Contact',true]
+];
+
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')}
+
+/* ---------- login ---------- */
+document.getElementById('l-go').onclick=async function(){
+  var email=document.getElementById('l-email').value.trim(),
+      pass=document.getElementById('l-pass').value;
+  this.disabled=true;
+  try{
+    var r=await api('login',{},null,email,pass);
+    creds={email:email,password:pass};
+    sessionStorage.setItem('ks',JSON.stringify(creds));
+    start();
+  }catch(e){document.getElementById('l-err').textContent=e.message}
+  this.disabled=false;
+};
+document.getElementById('l-pass').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('l-go').click()});
+
+async function api(action,extra,file,email,pass){
+  var body=Object.assign({
+    email:email||creds.email,password:pass||creds.password,action:action
+  },extra||{});
+  var r=await fetch('/api/admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  var j=await r.json();
+  if(!r.ok)throw new Error(j.error||'Erreur');
+  return j;
+}
+
+/* ---------- app ---------- */
+async function start(){
+  var r=await fetch('content.json?t='+Date.now());
+  C=await r.json();
+  document.getElementById('login').style.display='none';
+  document.getElementById('app').style.display='block';
+  document.getElementById('savebar').style.display='flex';
+  renderTextes();renderGal('porcelaine');renderGal('ceramique');
+  renderHist('evenements');renderHist('stages');
+}
+
+/* Textes WYSIWYG */
+function renderTextes(){
+  var host=document.getElementById('textes');host.innerHTML='';
+  FIELDS.forEach(function(f){
+    var key=f[0],lab=f[1],one=f[2];
+    var d=document.createElement('div');d.className='field';
+    d.innerHTML='<label>'+lab+'</label>'
+      +(one?'':'<div class="toolbar">'
+        +'<button type="button" data-c="bold"><b>G</b></button>'
+        +'<button type="button" data-c="italic"><i>I</i></button>'
+        +'<button type="button" data-c="underline"><u>S</u></button>'
+        +'<button type="button" data-c="insertUnorderedList">• Liste</button>'
+        +'<button type="button" data-c="removeFormat">Effacer le style</button>'
+        +'</div>')
+      +'<div contenteditable="true" class="'+(one?'one':'')+'" data-key="'+key+'"></div>';
+    d.querySelector('[contenteditable]').innerHTML=C.textes[key]||'';
+    d.querySelectorAll('.toolbar button').forEach(function(b){
+      b.addEventListener('mousedown',function(e){e.preventDefault();document.execCommand(b.dataset.c,false,null)});
+    });
+    host.appendChild(d);
+  });
+}
+function collectTextes(){
+  document.querySelectorAll('#textes [contenteditable]').forEach(function(el){
+    C.textes[el.dataset.key]=el.innerHTML.trim();
+  });
+}
+
+/* Galeries */
+function renderGal(sec){
+  var host=document.getElementById('gal-'+sec);host.innerHTML='';
+  C.galeries[sec].forEach(function(p,i){
+    var d=document.createElement('div');d.className='grow';
+    d.innerHTML='<img src="'+esc(p.src)+'">'
+      +'<input type="text" value="'+esc(p.legende)+'" placeholder="Légende" oninput="C.galeries[\''+sec+'\']['+i+'].legende=this.value">'
+      +'<span class="ops">'
+      +'<button class="icon" onclick="moveGal(\''+sec+'\','+i+',-1)">↑</button>'
+      +'<button class="icon" onclick="moveGal(\''+sec+'\','+i+',1)">↓</button>'
+      +'<button class="icon del" onclick="delGal(\''+sec+'\','+i+')">✕</button>'
+      +'</span>';
+    host.appendChild(d);
+  });
+}
+function moveGal(sec,i,d){var a=C.galeries[sec];var j=i+d;if(j<0||j>=a.length)return;var t=a[i];a[i]=a[j];a[j]=t;renderGal(sec)}
+function delGal(sec,i){if(!confirm('Retirer cette photo de la galerie ?'))return;C.galeries[sec].splice(i,1);renderGal(sec)}
+function addPhoto(sec){pickImage(function(src){C.galeries[sec].push({src:src,legende:''});renderGal(sec)})}
+
+/* Historique */
+function renderHist(cat){
+  var host=document.getElementById('hist-'+cat);host.innerHTML='';
+  C.historique[cat].forEach(function(g,gi){
+    var d=document.createElement('div');d.className='hgroup';
+    var head='<div class="hgroup-head">'
+      +'<input type="text" value="'+esc(g.groupe)+'" placeholder="Type d’évènement (ex : Marchés de Noël)" oninput="C.historique[\''+cat+'\']['+gi+'].groupe=this.value">'
+      +'<input type="text" style="max-width:140px" value="'+esc(g.periode)+'" placeholder="Période (ex : 2011 – 2022)" oninput="C.historique[\''+cat+'\']['+gi+'].periode=this.value">'
+      +'<button class="icon del" title="Supprimer le groupe" onclick="delGroup(\''+cat+'\','+gi+')">✕</button>'
+      +'</div>';
+    var items=g.items.map(function(it,ii){
+      var im=it.src?'<img src="'+esc(it.src)+'">':'<span class="ph"></span>';
+      return '<div class="hitem">'+im
+        +'<input type="text" value="'+esc(it.titre)+'" placeholder="Titre" oninput="C.historique[\''+cat+'\']['+gi+'].items['+ii+'].titre=this.value">'
+        +'<input type="text" value="'+esc(it.legende)+'" placeholder="Légende de la photo" oninput="C.historique[\''+cat+'\']['+gi+'].items['+ii+'].legende=this.value">'
+        +'<span class="ops">'
+        +'<button class="icon" title="Photo" onclick="setItemPhoto(\''+cat+'\','+gi+','+ii+')">📷</button>'
+        +'<button class="icon" onclick="moveItem(\''+cat+'\','+gi+','+ii+',-1)">↑</button>'
+        +'<button class="icon" onclick="moveItem(\''+cat+'\','+gi+','+ii+',1)">↓</button>'
+        +'<button class="icon del" onclick="delItem(\''+cat+'\','+gi+','+ii+')">✕</button>'
+        +'</span></div>';
+    }).join('');
+    d.innerHTML=head+items+'<div style="margin-top:8px"><button class="btn2" onclick="addItem(\''+cat+'\','+gi+')">+ Ajouter une ligne</button></div>';
+    host.appendChild(d);
+  });
+}
+function addGroup(cat){C.historique[cat].push({groupe:'',periode:'',items:[]});renderHist(cat)}
+function delGroup(cat,gi){if(!confirm('Supprimer ce groupe et toutes ses lignes ?'))return;C.historique[cat].splice(gi,1);renderHist(cat)}
+function addItem(cat,gi){C.historique[cat][gi].items.push({titre:'',src:'',legende:''});renderHist(cat)}
+function delItem(cat,gi,ii){C.historique[cat][gi].items.splice(ii,1);renderHist(cat)}
+function moveItem(cat,gi,ii,d){var a=C.historique[cat][gi].items;var j=ii+d;if(j<0||j>=a.length)return;var t=a[ii];a[ii]=a[j];a[j]=t;renderHist(cat)}
+function setItemPhoto(cat,gi,ii){pickImage(function(src){C.historique[cat][gi].items[ii].src=src;renderHist(cat)})}
+
+/* Upload image : redimensionnée côté navigateur puis committée sur GitHub */
+function pickImage(cb){
+  var inp=document.getElementById('file');
+  inp.onchange=async function(){
+    var f=inp.files[0];inp.value='';if(!f)return;
+    setStatus('Envoi de la photo…');
+    try{
+      var b64=await resize(f,1200,.82);
+      var r=await api('upload_image',{data:b64,filename:f.name});
+      setStatus('Photo ajoutée — pense à Enregistrer.');
+      cb(r.src);
+    }catch(e){setStatus('Erreur : '+e.message)}
+  };
+  inp.click();
+}
+function resize(file,max,q){
+  return new Promise(function(ok,ko){
+    var img=new Image();
+    img.onload=function(){
+      var w=img.width,h=img.height;
+      if(w>max){h=Math.round(h*max/w);w=max}
+      var c=document.createElement('canvas');c.width=w;c.height=h;
+      c.getContext('2d').drawImage(img,0,0,w,h);
+      ok(c.toDataURL('image/jpeg',q).split(',')[1]);
+    };
+    img.onerror=ko;
+    img.src=URL.createObjectURL(file);
+  });
+}
+
+/* Save */
+function setStatus(t){document.getElementById('status').textContent=t}
+document.getElementById('save').onclick=async function(){
+  this.disabled=true;collectTextes();setStatus('Enregistrement…');
+  try{
+    await api('save_content',{data:C});
+    setStatus('Enregistré ✓ — en ligne dans ~1 minute.');
+  }catch(e){setStatus('Erreur : '+e.message)}
+  this.disabled=false;
+};
+
+/* session */
+try{var s=sessionStorage.getItem('ks');if(s){creds=JSON.parse(s);start()}}catch(e){}
+</script>
+</body>
+</html>

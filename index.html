@@ -61,26 +61,15 @@
   .stages-cols h3{font-family:var(--serif);font-size:1.5rem;font-weight:600;margin-bottom:12px}
   .stages-cols p{color:#5a534b}
 
-  .contact-box{max-width:560px;margin:0 auto}
-  form{display:grid;gap:16px}
-  label{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-  input,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:3px;background:#fff;font-family:var(--sans);font-size:1rem;color:var(--ink)}
-  input:focus,textarea:focus{outline:none;border-color:var(--accent)}
-  button{justify-self:center;margin-top:8px;padding:13px 44px;background:var(--accent);color:#fff;border:none;border-radius:3px;font-family:var(--sans);font-size:.9rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:background .2s}
-  button:hover{background:#823b2f}
-
-  footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--muted);font-size:.85rem;letter-spacing:.06em}
-
   .hist{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;max-width:900px;margin:56px auto 0}
   @media(max-width:720px){.hist{grid-template-columns:1fr}}
   .hist h3{font-family:var(--serif);font-size:1.5rem;font-weight:600;margin-bottom:10px}
+  .hist-group h4{font-family:var(--sans);font-weight:500;font-size:.78rem;letter-spacing:.2em;color:var(--accent);margin:22px 0 2px}
+  .hist-group.folded{display:none}
   figure.hist-item{display:flex;align-items:center;gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
   figure.hist-item img{width:56px;height:56px;object-fit:cover;border-radius:3px;flex-shrink:0}
   figure.hist-item .ph{width:56px;height:56px;border-radius:3px;flex-shrink:0;background:#ece5da;display:flex;align-items:center;justify-content:center;color:#c4b8a8;font-size:1.1rem}
   figure.hist-item figcaption{text-transform:none;letter-spacing:0;font-size:.98rem;color:var(--ink);text-align:left;margin:0}
-  .hist-year{margin-left:auto;color:var(--muted);font-size:.82rem;letter-spacing:.1em;white-space:nowrap;padding-left:12px}
-  .hist-group h4{font-family:var(--sans);font-weight:500;font-size:.78rem;letter-spacing:.2em;color:var(--accent);margin:22px 0 2px}
-  .hist-group.folded{display:none}
   .hist-toggle{background:none;border:none;color:var(--accent);font-family:var(--sans);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;padding:14px 0 0;opacity:.85}
   .hist-toggle:hover{opacity:1;background:none}
 
@@ -96,6 +85,16 @@
   .lb-prev{left:10px}
   .lb-next{right:10px}
   @media(max-width:600px){.lb-prev{left:0}.lb-next{right:0}.lb img{max-width:96vw}}
+
+  .contact-box{max-width:560px;margin:0 auto}
+  form{display:grid;gap:16px}
+  label{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  input,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:3px;background:#fff;font-family:var(--sans);font-size:1rem;color:var(--ink)}
+  input:focus,textarea:focus{outline:none;border-color:var(--accent)}
+  button{justify-self:center;margin-top:8px;padding:13px 44px;background:var(--accent);color:#fff;border:none;border-radius:3px;font-family:var(--sans);font-size:.9rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+  button:hover{background:#823b2f}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--muted);font-size:.85rem;letter-spacing:.06em}
 </style>
 </head>
 <body>
@@ -118,34 +117,16 @@
   <div class="band"><img src="images/hero-bols.jpg" alt="Bols en porcelaine peints à la main"></div>
 </div>
 
-<div class="poem wrap">
-  S’imaginer, un instant de vie, une ambiance, un visage…<br>
-  Penser un décor, un détail, une forme, une texture…<br>
-  Doser la terre, un émail, la couleur, le feu…<br>
-  Attendre… puis voir apparaître, figé par le feu, l’éclat, la couleur…<br>
-  Observer la transformation, le mouvement, la symbiose des éléments…<br>
-  Pour apprendre toujours des brisures, des coulures, des cassures…
-  <strong>C’est le chemin que je vous propose ici.</strong>
-</div>
+<div class="poem wrap" id="txt-poeme"></div>
 
 <section id="porcelaine">
   <div class="wrap">
     <div class="sec-title">
       <h2>Porcelaine</h2>
-      <p>Décors peints à la main sur porcelaine — collections et plaisirs personnalisés.</p>
+      <p id="txt-porcelaine_intro"></p>
     </div>
     <div class="rule"></div>
-    <div class="grid">
-      <figure><div class="card"><img src="images/the.jpg" alt="Tasses Thé ou Expresso"></div><figcaption>Thé ou Expresso ?</figcaption></figure>
-      <figure><div class="card"><img src="images/expresso.jpg" alt="Tasses expresso étoilées"></div><figcaption>Expresso</figcaption></figure>
-      <figure><div class="card"><img src="images/japonaise.jpg" alt="Plateau Parfum d'Asie"></div><figcaption>Parfum d’Asie</figcaption></figure>
-      <figure><div class="card"><img src="images/noir-et-blanc.jpg" alt="Tasses Couleur Noir et Blanc"></div><figcaption>Couleur Noir &amp; Blanc</figcaption></figure>
-      <figure><div class="card"><img src="images/londres.jpg" alt="Mugs Café Londonien"></div><figcaption>Café Londonien</figcaption></figure>
-      <figure><div class="card"><img src="images/broderie.jpg" alt="Assiettes Broderie d'Alsace"></div><figcaption>Broderie d’Alsace</figcaption></figure>
-      <figure><div class="card"><img src="images/ete.jpg" alt="Plat Été ensoleillé"></div><figcaption>Été ensoleillé</figcaption></figure>
-      <figure><div class="card"><img src="images/noel.jpg" alt="Assiettes Noël sous le sapin"></div><figcaption>Noël sous le sapin</figcaption></figure>
-      <figure><div class="card"><img src="images/vase.jpg" alt="Vase graminées"></div><figcaption>Vase graminées</figcaption></figure>
-    </div>
+    <div class="grid" id="grid-porcelaine"></div>
   </div>
 </section>
 
@@ -153,14 +134,10 @@
   <div class="wrap">
     <div class="sec-title">
       <h2>Céramique</h2>
-      <p>Terre, émail, couleur et feu — pièces uniques façonnées à l’atelier.</p>
+      <p id="txt-ceramique_intro"></p>
     </div>
     <div class="rule"></div>
-    <div class="grid">
-      <figure><div class="card"><img src="images/poules.jpg" alt="Les poules en céramique"></div><figcaption>Les poules</figcaption></figure>
-      <figure><div class="card"><img src="images/oiseaux.jpg" alt="Oiseaux rigolos en céramique"></div><figcaption>Oiseaux rigolos</figcaption></figure>
-      <figure><div class="card"><img src="images/coupe.jpg" alt="Coupe en céramique"></div><figcaption>Coupes</figcaption></figure>
-    </div>
+    <div class="grid" id="grid-ceramique"></div>
   </div>
 </section>
 
@@ -172,55 +149,18 @@
     <div class="rule"></div>
     <div class="stages-cols">
       <div>
-        <h3>À l’atelier</h3>
-        <p>Décors sur porcelaine et céramique, selon les idées de chacun ou autour d’un thème, par petits groupes de 3 ou 4 personnes. Des stages sont régulièrement organisés à l’atelier ou en association, au printemps et durant la période d’avant Noël. Débutants bienvenus, aucune connaissance préalable nécessaire.</p>
+        <h3 id="txt-stages_atelier_titre"></h3>
+        <p id="txt-stages_atelier"></p>
       </div>
       <div>
-        <h3>En Alsace</h3>
-        <p>Retrouvez-moi lors des marchés de Noël alsaciens et à l’Écomusée d’Alsace, à l’occasion du grand week-end des Arts du feu, pour partager le plaisir du décor sur porcelaine et de la céramique dans l’atelier du potier.</p>
+        <h3 id="txt-stages_alsace_titre"></h3>
+        <p id="txt-stages_alsace"></p>
       </div>
     </div>
 
     <div class="hist">
-      <div>
-        <h3>Évènements passés</h3>
-        <div class="hist-group">
-          <h4>Écomusée d’Alsace · 2014 – 2023</h4>
-          <figure class="hist-item"><img src="images/hist-ecomusee2023.jpg" alt=""><figcaption>Les Arts du feu</figcaption></figure>
-          <figure class="hist-item"><img src="images/hist-ecomusee2018.jpg" alt=""><figcaption>L’atelier du potier</figcaption></figure>
-          <figure class="hist-item no-img"><span class="ph">✦</span><figcaption>Boutique de l’Écomusée · Ungersheim</figcaption></figure>
-        </div>
-        <div class="hist-group">
-          <h4>Marchés de Noël · 2014 – 2023</h4>
-          <figure class="hist-item"><img src="images/noel.jpg" alt=""><figcaption>Turckheim</figcaption></figure>
-          <figure class="hist-item"><img src="images/hist-noel2018.jpg" alt=""><figcaption>Saint-Nicolas · Riedisheim</figcaption></figure>
-          <figure class="hist-item no-img"><span class="ph">✦</span><figcaption>Ottmarsheim</figcaption></figure>
-          <figure class="hist-item"><img src="images/hist-noel2014.jpg" alt=""><figcaption>Cité Hof · Riedisheim</figcaption></figure>
-          <figure class="hist-item no-img"><span class="ph">✦</span><figcaption>Parc de la Commanderie · Rixheim</figcaption></figure>
-        </div>
-        <div class="hist-group">
-          <h4>Marché de Pâques · 2014</h4>
-          <figure class="hist-item no-img"><span class="ph">✦</span><figcaption>Cité Hof · Riedisheim</figcaption></figure>
-        </div>
-      </div>
-      <div>
-        <h3>Stages passés</h3>
-        <div class="hist-group">
-          <h4>À l’atelier · 2015 – 2024</h4>
-          <figure class="hist-item"><img src="images/hist-atelier.jpg" alt=""><figcaption>Décors sur porcelaine &amp; céramique</figcaption></figure>
-          <figure class="hist-item"><img src="images/hist-saison2016.jpg" alt=""><figcaption>Saison à l’atelier</figcaption></figure>
-        </div>
-        <div class="hist-group">
-          <h4>Adultes · 2014 – 2018</h4>
-          <figure class="hist-item"><img src="images/hist-stages-adultes.jpg" alt=""><figcaption>À l’atelier &amp; en association</figcaption></figure>
-          <figure class="hist-item"><img src="images/coupe.jpg" alt=""><figcaption>Céramique pour débutants</figcaption></figure>
-        </div>
-        <div class="hist-group">
-          <h4>Enfants · 2014 – 2015</h4>
-          <figure class="hist-item"><img src="images/hist-stages-enfants.jpg" alt=""><figcaption>Découverte de la terre</figcaption></figure>
-          <figure class="hist-item no-img"><span class="ph">✦</span><figcaption>Stage d’été · Hochstatt</figcaption></figure>
-        </div>
-      </div>
+      <div id="hist-evenements"><h3>Évènements passés</h3></div>
+      <div id="hist-stages"><h3>Stages passés</h3></div>
     </div>
   </div>
 </section>
@@ -229,7 +169,7 @@
   <div class="wrap">
     <div class="sec-title">
       <h2>Contact</h2>
-      <p>Une question, une envie de pièce personnalisée, une inscription à un stage ?</p>
+      <p id="txt-contact_intro"></p>
     </div>
     <div class="rule"></div>
     <div class="contact-box">
@@ -258,34 +198,52 @@
 
 <script>
 (function(){
-  var figs=[].slice.call(document.querySelectorAll('.grid figure')),
-      lb=document.getElementById('lb'),
-      im=lb.querySelector('img'), cap=lb.querySelector('.lb-cap'), cur=0;
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')}
+
+  /* ---------- rendu depuis content.json ---------- */
+  function render(C){
+    // textes
+    Object.keys(C.textes||{}).forEach(function(k){
+      var el=document.getElementById('txt-'+k);
+      if(el)el.innerHTML=C.textes[k];
+    });
+    // galeries
+    ['porcelaine','ceramique'].forEach(function(sec){
+      var host=document.getElementById('grid-'+sec);
+      host.innerHTML=(C.galeries[sec]||[]).map(function(p){
+        return '<figure><div class="card"><img src="'+esc(p.src)+'" alt="'+esc(p.legende)+'" loading="lazy"></div>'
+          +'<figcaption>'+esc(p.legende)+'</figcaption></figure>';
+      }).join('');
+    });
+    // historique
+    ['evenements','stages'].forEach(function(cat){
+      var host=document.getElementById('hist-'+cat);
+      host.querySelectorAll('.hist-group,.hist-toggle').forEach(function(n){n.remove()});
+      (C.historique[cat]||[]).forEach(function(g){
+        var d=document.createElement('div');d.className='hist-group';
+        d.innerHTML='<h4>'+esc(g.groupe)+(g.periode?' · '+esc(g.periode):'')+'</h4>'
+          +(g.items||[]).map(function(it){
+            var im=it.src?'<img src="'+esc(it.src)+'" alt="'+esc(it.legende||it.titre)+'" title="'+esc(it.legende)+'" loading="lazy">':'<span class="ph">✦</span>';
+            return '<figure class="hist-item">'+im+'<figcaption>'+esc(it.titre)+'</figcaption></figure>';
+          }).join('');
+        host.appendChild(d);
+      });
+    });
+    initLightbox();initToggles();
+  }
+
+  /* ---------- lightbox (galeries uniquement) ---------- */
+  var lb=document.getElementById('lb'),lbImg=lb.querySelector('img'),lbCap=lb.querySelector('.lb-cap'),figs=[],cur=0;
   function show(i){
     cur=(i+figs.length)%figs.length;
-    im.src=figs[cur].querySelector('img').src;
-    cap.textContent=figs[cur].querySelector('figcaption').textContent;
+    lbImg.src=figs[cur].querySelector('img').src;
+    lbCap.textContent=figs[cur].querySelector('figcaption').textContent;
     lb.classList.add('open');
   }
-  figs.forEach(function(f,i){f.addEventListener('click',function(){show(i)})});
-
-  // listes historiques : ~3 premières lignes visibles (par année), le reste sous « Afficher plus »
-  [].slice.call(document.querySelectorAll('.hist > div')).forEach(function(col){
-    var groups=[].slice.call(col.querySelectorAll('.hist-group')), n=0, folded=[];
-    groups.forEach(function(g){
-      if(n>=3){g.classList.add('folded');folded.push(g);}
-      n+=g.querySelectorAll('figure.hist-item').length;
-    });
-    if(!folded.length)return;
-    var btn=document.createElement('button');
-    btn.className='hist-toggle';btn.textContent='Afficher plus';
-    btn.addEventListener('click',function(){
-      var open=btn.textContent==='Afficher plus';
-      folded.forEach(function(g){g.classList.toggle('folded',!open)});
-      btn.textContent=open?'Afficher moins':'Afficher plus';
-    });
-    col.appendChild(btn);
-  });
+  function initLightbox(){
+    figs=[].slice.call(document.querySelectorAll('.grid figure'));
+    figs.forEach(function(f,i){f.addEventListener('click',function(){show(i)})});
+  }
   lb.querySelector('.lb-close').addEventListener('click',function(){lb.classList.remove('open')});
   lb.querySelector('.lb-prev').addEventListener('click',function(e){e.stopPropagation();show(cur-1)});
   lb.querySelector('.lb-next').addEventListener('click',function(e){e.stopPropagation();show(cur+1)});
@@ -296,11 +254,28 @@
     if(e.key==='ArrowLeft')show(cur-1);
     if(e.key==='ArrowRight')show(cur+1);
   });
-})();
-</script>
-<script>
-(function(){
-  // adresse assemblée à l'exécution pour éviter les robots collecteurs
+
+  /* ---------- listes historiques : ~3 lignes puis « Afficher plus » ---------- */
+  function initToggles(){
+    [].slice.call(document.querySelectorAll('.hist > div')).forEach(function(col){
+      var groups=[].slice.call(col.querySelectorAll('.hist-group')),n=0,folded=[];
+      groups.forEach(function(g){
+        if(n>=3){g.classList.add('folded');folded.push(g);}
+        n+=g.querySelectorAll('figure.hist-item').length;
+      });
+      if(!folded.length)return;
+      var btn=document.createElement('button');
+      btn.className='hist-toggle';btn.textContent='Afficher plus';
+      btn.addEventListener('click',function(){
+        var open=btn.textContent==='Afficher plus';
+        folded.forEach(function(g){g.classList.toggle('folded',!open)});
+        btn.textContent=open?'Afficher moins':'Afficher plus';
+      });
+      col.appendChild(btn);
+    });
+  }
+
+  /* ---------- contact : mailto assemblé à l'exécution (anti-robots) ---------- */
   var u=['ka','rin','.sch','mitt','1'].join('');
   var d=['wana','doo','.fr'].join('');
   document.getElementById('contact-form').addEventListener('submit',function(e){
@@ -311,6 +286,10 @@
     var body=t+'\n\n— '+n+' ('+m+')';
     location.href='mailto:'+u+'%40'+d+'?subject='+encodeURIComponent('Message depuis karinschmitt.com — '+n)+'&body='+encodeURIComponent(body);
   });
+
+  /* ---------- chargement ---------- */
+  fetch('content.json').then(function(r){return r.json()}).then(render)
+    .catch(function(){/* contenu indisponible */});
 })();
 </script>
 </body>
