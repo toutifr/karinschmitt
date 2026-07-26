@@ -62,7 +62,8 @@
 
   .ctl{display:flex;gap:2px;position:absolute;top:8px;right:8px;opacity:0;transition:opacity .2s}
   figure:hover .ctl{opacity:1}
-  .ctl button{border:none;background:rgba(43,39,36,.75);color:#fff;width:26px;height:26px;border-radius:3px;cursor:pointer;font-size:.85rem;line-height:1}
+  .ctl button{border:none;background:rgba(43,39,36,.75);color:#fff;width:26px;height:26px;border-radius:3px;cursor:pointer;font-size:.85rem;line-height:1;display:flex;align-items:center;justify-content:center}
+  .hops button svg,.gdel svg{vertical-align:middle}
   .ctl button:hover{background:var(--accent)}
   .cap-input{display:block;width:100%;border:1px dashed transparent;background:none;font-family:var(--sans);font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center;margin-top:12px;padding:3px;border-radius:3px}
   .cap-input:hover{border-color:#d8cbb8}
@@ -119,7 +120,7 @@
     <button data-c="italic" title="Italique"><i>I</i></button>
     <button data-c="underline" title="Souligné"><u>S</u></button>
     <button data-c="insertUnorderedList" title="Liste">• Liste</button>
-    <button data-c="removeFormat" title="Effacer la mise en forme">⌫ style</button>
+    <button data-c="removeFormat" title="Effacer la mise en forme">Effacer style</button>
   </div>
   <a class="voir" href="index.html" target="_blank">Voir le site ↗</a>
 </div>
@@ -206,6 +207,16 @@
 <input type="file" id="file" accept="image/*" style="display:none">
 
 <script>
+/* icônes SVG (trait, couleur courante) */
+var IC={
+  cam:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
+  left:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>',
+  right:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>',
+  up:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>',
+  down:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>',
+  x:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+  plus:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>'
+};
 var C=null, creds=null;
 var TEXT_KEYS=['poeme','porcelaine_intro','ceramique_intro','stages_atelier_titre','stages_atelier','stages_alsace_titre','stages_alsace','contact_intro'];
 function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')}
@@ -258,10 +269,10 @@ function renderGal(sec){
     var f=document.createElement('figure');
     f.innerHTML='<div class="card"><img src="'+esc(p.src)+'" loading="lazy">'
       +'<span class="ctl">'
-      +'<button title="Remplacer la photo" onclick="replacePhoto(\''+sec+'\','+i+')">📷</button>'
-      +'<button title="Reculer" onclick="moveGal(\''+sec+'\','+i+',-1)">←</button>'
-      +'<button title="Avancer" onclick="moveGal(\''+sec+'\','+i+',1)">→</button>'
-      +'<button title="Retirer" onclick="delGal(\''+sec+'\','+i+')">✕</button>'
+      +'<button title="Remplacer la photo" onclick="replacePhoto(\''+sec+'\','+i+')">'+IC.cam+'</button>'
+      +'<button title="Reculer" onclick="moveGal(\''+sec+'\','+i+',-1)">'+IC.left+'</button>'
+      +'<button title="Avancer" onclick="moveGal(\''+sec+'\','+i+',1)">'+IC.right+'</button>'
+      +'<button title="Retirer" onclick="delGal(\''+sec+'\','+i+')">'+IC.x+'</button>'
       +'</span></div>'
       +'<input class="cap-input" placeholder="Légende" value="'+esc(p.legende)+'" oninput="C.galeries[\''+sec+'\']['+i+'].legende=this.value">';
     host.appendChild(f);
@@ -284,7 +295,7 @@ function renderHist(cat){
     h.innerHTML='<span contenteditable="true" data-ph="Type d’évènement" oninput="C.historique[\''+cat+'\']['+gi+'].groupe=this.textContent">'+esc(g.groupe)+'</span>'
       +'<span class="sep">·</span>'
       +'<span contenteditable="true" data-ph="Période (ex : 2011 – 2022)" oninput="C.historique[\''+cat+'\']['+gi+'].periode=this.textContent">'+esc(g.periode)+'</span>'
-      +'<button class="gdel" title="Supprimer le groupe" onclick="delGroup(\''+cat+'\','+gi+')">✕</button>';
+      +'<button class="gdel" title="Supprimer le groupe" onclick="delGroup(\''+cat+'\','+gi+')">'+IC.x+'</button>';
     d.appendChild(h);
     g.items.forEach(function(it,ii){
       var f=document.createElement('figure');f.className='hist-item';
@@ -297,9 +308,9 @@ function renderHist(cat){
         +'<input class="leg" value="'+esc(it.legende)+'" placeholder="Légende de la photo (optionnelle)" oninput="C.historique[\''+cat+'\']['+gi+'].items['+ii+'].legende=this.value">'
         +'</span>'
         +'<span class="hops">'
-        +'<button onclick="moveItem(\''+cat+'\','+gi+','+ii+',-1)">↑</button>'
-        +'<button onclick="moveItem(\''+cat+'\','+gi+','+ii+',1)">↓</button>'
-        +'<button class="del" onclick="delItem(\''+cat+'\','+gi+','+ii+')">✕</button>'
+        +'<button title="Monter" onclick="moveItem(\''+cat+'\','+gi+','+ii+',-1)">'+IC.up+'</button>'
+        +'<button title="Descendre" onclick="moveItem(\''+cat+'\','+gi+','+ii+',1)">'+IC.down+'</button>'
+        +'<button class="del" title="Supprimer" onclick="delItem(\''+cat+'\','+gi+','+ii+')">'+IC.x+'</button>'
         +'</span>';
       d.appendChild(f);
     });
