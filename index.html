@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karin Schmitt — Céramiques et porcelaines peintes</title>
+<meta name="description" content="Karin Schmitt — céramiques et porcelaines peintes à la main en Alsace. Pièces uniques, plaisirs personnalisés, stages à l'atelier.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf7f2;
+    --ink:#2b2724;
+    --muted:#7d746b;
+    --accent:#9c4a3c;
+    --line:#e6ded3;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Jost',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.7;font-size:17px}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+
+  header{position:fixed;top:0;left:0;right:0;z-index:10;background:rgba(250,247,242,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:var(--serif);font-size:1.35rem;font-weight:600;letter-spacing:.04em;text-decoration:none;color:var(--ink)}
+  .brand span{color:var(--accent)}
+  nav a{color:var(--muted);text-decoration:none;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;margin-left:26px;transition:color .2s}
+  nav a:hover{color:var(--accent)}
+  @media(max-width:720px){nav a{margin-left:14px;font-size:.72rem;letter-spacing:.08em}}
+
+  .hero{padding:150px 0 60px;text-align:center}
+  .hero h1{font-family:var(--serif);font-size:clamp(2.4rem,6vw,4rem);font-weight:500;letter-spacing:.02em}
+  .hero .sub{color:var(--accent);font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,3vw,1.6rem);margin-top:6px}
+  .band{margin:48px auto 0;max-width:900px;padding:0 24px}
+  .band img{width:100%;border-radius:4px;display:block}
+
+  .poem{max-width:640px;margin:70px auto;text-align:center;font-family:var(--serif);font-style:italic;font-size:1.35rem;line-height:2;color:#514a43}
+  .poem strong{display:block;margin-top:1.2em;color:var(--accent);font-style:normal;font-weight:600;letter-spacing:.02em}
+
+  section{padding:80px 0}
+  .sec-title{text-align:center;margin-bottom:14px}
+  .sec-title h2{font-family:var(--serif);font-size:2.2rem;font-weight:500}
+  .sec-title p{color:var(--muted);max-width:560px;margin:10px auto 0}
+  .rule{width:56px;height:1px;background:var(--accent);margin:18px auto 44px}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.grid{grid-template-columns:1fr}}
+  figure{margin:0}
+  .card{overflow:hidden;border-radius:4px;background:#fff;box-shadow:0 1px 3px rgba(43,39,36,.08)}
+  .card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .5s ease}
+  figure:hover .card img{transform:scale(1.04)}
+  figcaption{font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center;margin-top:12px}
+
+  .alt{background:#f3eee6;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stages-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:900px;margin:0 auto}
+  @media(max-width:720px){.stages-cols{grid-template-columns:1fr}}
+  .stages-cols h3{font-family:var(--serif);font-size:1.5rem;font-weight:600;margin-bottom:12px}
+  .stages-cols p{color:#5a534b}
+
+  .contact-box{max-width:560px;margin:0 auto}
+  form{display:grid;gap:16px}
+  label{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  input,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:3px;background:#fff;font-family:var(--sans);font-size:1rem;color:var(--ink)}
+  input:focus,textarea:focus{outline:none;border-color:var(--accent)}
+  button{justify-self:center;margin-top:8px;padding:13px 44px;background:var(--accent);color:#fff;border:none;border-radius:3px;font-family:var(--sans);font-size:.9rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+  button:hover{background:#823b2f}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--muted);font-size:.85rem;letter-spacing:.06em}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">Karin <span>Schmitt</span></a>
+    <nav>
+      <a href="#porcelaine">Porcelaine</a>
+      <a href="#ceramique">Céramique</a>
+      <a href="#stages">Stages</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>Karin Schmitt</h1>
+  <p class="sub">Céramiques &amp; porcelaines peintes</p>
+  <div class="band"><img src="images/hero-bols.jpg" alt="Bols en porcelaine peints à la main"></div>
+</div>
+
+<div class="poem wrap">
+  S’imaginer, un instant de vie, une ambiance, un visage…<br>
+  Penser un décor, un détail, une forme, une texture…<br>
+  Doser la terre, un émail, la couleur, le feu…<br>
+  Attendre… puis voir apparaître, figé par le feu, l’éclat, la couleur…<br>
+  Observer la transformation, le mouvement, la symbiose des éléments…<br>
+  Pour apprendre toujours des brisures, des coulures, des cassures…
+  <strong>C’est le chemin que je vous propose ici.</strong>
+</div>
+
+<section id="porcelaine">
+  <div class="wrap">
+    <div class="sec-title">
+      <h2>Porcelaine</h2>
+      <p>Décors peints à la main sur porcelaine — collections et plaisirs personnalisés.</p>
+    </div>
+    <div class="rule"></div>
+    <div class="grid">
+      <figure><div class="card"><img src="images/the.jpg" alt="Tasses Thé ou Expresso"></div><figcaption>Thé ou Expresso ?</figcaption></figure>
+      <figure><div class="card"><img src="images/expresso.jpg" alt="Tasses expresso étoilées"></div><figcaption>Expresso</figcaption></figure>
+      <figure><div class="card"><img src="images/japonaise.jpg" alt="Plateau Parfum d'Asie"></div><figcaption>Parfum d’Asie</figcaption></figure>
+      <figure><div class="card"><img src="images/noir-et-blanc.jpg" alt="Tasses Couleur Noir et Blanc"></div><figcaption>Couleur Noir &amp; Blanc</figcaption></figure>
+      <figure><div class="card"><img src="images/londres.jpg" alt="Mugs Café Londonien"></div><figcaption>Café Londonien</figcaption></figure>
+      <figure><div class="card"><img src="images/broderie.jpg" alt="Assiettes Broderie d'Alsace"></div><figcaption>Broderie d’Alsace</figcaption></figure>
+      <figure><div class="card"><img src="images/ete.jpg" alt="Plat Été ensoleillé"></div><figcaption>Été ensoleillé</figcaption></figure>
+      <figure><div class="card"><img src="images/noel.jpg" alt="Assiettes Noël sous le sapin"></div><figcaption>Noël sous le sapin</figcaption></figure>
+      <figure><div class="card"><img src="images/vase.jpg" alt="Vase graminées"></div><figcaption>Vase graminées</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="ceramique" class="alt">
+  <div class="wrap">
+    <div class="sec-title">
+      <h2>Céramique</h2>
+      <p>Terre, émail, couleur et feu — pièces uniques façonnées à l’atelier.</p>
+    </div>
+    <div class="rule"></div>
+    <div class="grid">
+      <figure><div class="card"><img src="images/poules.jpg" alt="Les poules en céramique"></div><figcaption>Les poules</figcaption></figure>
+      <figure><div class="card"><img src="images/oiseaux.jpg" alt="Oiseaux rigolos en céramique"></div><figcaption>Oiseaux rigolos</figcaption></figure>
+      <figure><div class="card"><img src="images/coupe.jpg" alt="Coupe en céramique"></div><figcaption>Coupes</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="stages">
+  <div class="wrap">
+    <div class="sec-title">
+      <h2>Stages &amp; Évènements</h2>
+    </div>
+    <div class="rule"></div>
+    <div class="stages-cols">
+      <div>
+        <h3>À l’atelier</h3>
+        <p>Décors sur porcelaine et céramique, selon les idées de chacun ou autour d’un thème, par petits groupes de 3 ou 4 personnes. Des stages sont régulièrement organisés à l’atelier ou en association, au printemps et durant la période d’avant Noël. Débutants bienvenus, aucune connaissance préalable nécessaire.</p>
+      </div>
+      <div>
+        <h3>En Alsace</h3>
+        <p>Retrouvez-moi lors des marchés de Noël alsaciens et à l’Écomusée d’Alsace, à l’occasion du grand week-end des Arts du feu, pour partager le plaisir du décor sur porcelaine et de la céramique dans l’atelier du potier.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="alt">
+  <div class="wrap">
+    <div class="sec-title">
+      <h2>Contact</h2>
+      <p>Une question, une envie de pièce personnalisée, une inscription à un stage ?</p>
+    </div>
+    <div class="rule"></div>
+    <div class="contact-box">
+      <form action="https://formspree.io/f/VOTRE_ID" method="POST">
+        <div><label for="name">Votre nom</label><input type="text" id="name" name="name" required></div>
+        <div><label for="email">Votre e-mail</label><input type="email" id="email" name="_replyto" required></div>
+        <div><label for="message">Votre message</label><textarea id="message" name="message" rows="6" required></textarea></div>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Karin Schmitt — Céramiques &amp; porcelaines peintes</div>
+</footer>
+
+</body>
+</html>
