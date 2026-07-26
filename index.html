@@ -74,8 +74,7 @@
   .hist{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;max-width:900px;margin:56px auto 0}
   @media(max-width:720px){.hist{grid-template-columns:1fr}}
   .hist h3{font-family:var(--serif);font-size:1.5rem;font-weight:600;margin-bottom:10px}
-  figure.hist-item{display:flex;align-items:center;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);cursor:zoom-in}
-  figure.hist-item.no-img{cursor:default}
+  figure.hist-item{display:flex;align-items:center;gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
   figure.hist-item img{width:56px;height:56px;object-fit:cover;border-radius:3px;flex-shrink:0}
   figure.hist-item .ph{width:56px;height:56px;border-radius:3px;flex-shrink:0;background:#ece5da;display:flex;align-items:center;justify-content:center;color:#c4b8a8;font-size:1.1rem}
   figure.hist-item figcaption{text-transform:none;letter-spacing:0;font-size:.98rem;color:var(--ink);text-align:left;margin:0}
@@ -238,7 +237,7 @@
 
 <script>
 (function(){
-  var figs=[].slice.call(document.querySelectorAll('.grid figure, figure.hist-item:not(.no-img)')),
+  var figs=[].slice.call(document.querySelectorAll('.grid figure')),
       lb=document.getElementById('lb'),
       im=lb.querySelector('img'), cap=lb.querySelector('.lb-cap'), cur=0;
   function show(i){
