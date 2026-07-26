@@ -165,11 +165,12 @@
     </div>
     <div class="rule"></div>
     <div class="contact-box">
-      <form action="https://formspree.io/f/VOTRE_ID" method="POST">
+      <form id="contact-form">
         <div><label for="name">Votre nom</label><input type="text" id="name" name="name" required></div>
-        <div><label for="email">Votre e-mail</label><input type="email" id="email" name="_replyto" required></div>
+        <div><label for="email">Votre e-mail</label><input type="email" id="email" name="email" required></div>
         <div><label for="message">Votre message</label><textarea id="message" name="message" rows="6" required></textarea></div>
         <button type="submit">Envoyer</button>
+        <p style="text-align:center;font-size:.82rem;color:var(--muted)">Le bouton ouvre votre messagerie avec le message pré-rempli.</p>
       </form>
     </div>
   </div>
@@ -179,5 +180,20 @@
   <div class="wrap">Karin Schmitt — Céramiques &amp; porcelaines peintes</div>
 </footer>
 
+<script>
+(function(){
+  // adresse assemblée à l'exécution pour éviter les robots collecteurs
+  var u=['ka','rin','.sch','mitt','1'].join('');
+  var d=['wana','doo','.fr'].join('');
+  document.getElementById('contact-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=document.getElementById('name').value,
+        m=document.getElementById('email').value,
+        t=document.getElementById('message').value;
+    var body=t+'\n\n— '+n+' ('+m+')';
+    location.href='mailto:'+u+'%40'+d+'?subject='+encodeURIComponent('Message depuis karinschmitt.com — '+n)+'&body='+encodeURIComponent(body);
+  });
+})();
+</script>
 </body>
 </html>
