@@ -11,20 +11,56 @@
   },
   "galeries": {
     "porcelaine": [
-      { "src": "images/the.jpg", "legende": "Thé ou Expresso ?" },
-      { "src": "images/expresso.jpg", "legende": "Expresso" },
-      { "src": "images/japonaise.jpg", "legende": "Parfum d’Asie" },
-      { "src": "images/noir-et-blanc.jpg", "legende": "Couleur Noir & Blanc" },
-      { "src": "images/londres.jpg", "legende": "Café Londonien" },
-      { "src": "images/broderie.jpg", "legende": "Broderie d’Alsace" },
-      { "src": "images/ete.jpg", "legende": "Été ensoleillé" },
-      { "src": "images/noel.jpg", "legende": "Noël sous le sapin" },
-      { "src": "images/vase.jpg", "legende": "Vase graminées" }
+      {
+        "src": "images/the.jpg",
+        "legende": "Thé ou Expresso ?"
+      },
+      {
+        "src": "images/expresso.jpg",
+        "legende": "Expresso"
+      },
+      {
+        "src": "images/japonaise.jpg",
+        "legende": "Parfum d’Asie"
+      },
+      {
+        "src": "images/noir-et-blanc.jpg",
+        "legende": "Couleur Noir & Blanc"
+      },
+      {
+        "src": "images/londres.jpg",
+        "legende": "Café Londonien"
+      },
+      {
+        "src": "images/broderie.jpg",
+        "legende": "Broderie d’Alsace"
+      },
+      {
+        "src": "images/ete.jpg",
+        "legende": "Été ensoleillé"
+      },
+      {
+        "src": "images/noel.jpg",
+        "legende": "Noël sous le sapin"
+      },
+      {
+        "src": "images/vase.jpg",
+        "legende": "Vase graminées"
+      }
     ],
     "ceramique": [
-      { "src": "images/poules.jpg", "legende": "Les poules" },
-      { "src": "images/oiseaux.jpg", "legende": "Oiseaux rigolos" },
-      { "src": "images/coupe.jpg", "legende": "Coupes" }
+      {
+        "src": "images/poules.jpg",
+        "legende": "Les poules"
+      },
+      {
+        "src": "images/oiseaux.jpg",
+        "legende": "Oiseaux rigolos"
+      },
+      {
+        "src": "images/coupe.jpg",
+        "legende": "Coupes"
+      }
     ]
   },
   "historique": {
@@ -33,27 +69,73 @@
         "groupe": "Écomusée d’Alsace",
         "periode": "2014 – 2023",
         "items": [
-          { "titre": "Les Arts du feu", "legende": "", "photos": ["images/hist-ecomusee2023.jpg"] },
-          { "titre": "L’atelier du potier", "legende": "", "photos": ["images/hist-ecomusee2018.jpg"] },
-          { "titre": "Boutique de l’Écomusée · Ungersheim", "legende": "", "photos": [] }
+          {
+            "titre": "Les Arts du feu",
+            "legende": "",
+            "photos": [
+              "images/hist-ecomusee2023.jpg"
+            ]
+          },
+          {
+            "titre": "L’atelier du potier",
+            "legende": "",
+            "photos": [
+              "images/hist-ecomusee2018.jpg"
+            ]
+          },
+          {
+            "titre": "Boutique de l’Écomusée · Ungersheim",
+            "legende": "",
+            "photos": []
+          }
         ]
       },
       {
         "groupe": "Marchés de Noël",
         "periode": "2014 – 2023",
         "items": [
-          { "titre": "Turckheim", "legende": "", "photos": ["images/noel.jpg"] },
-          { "titre": "Saint-Nicolas · Riedisheim", "legende": "", "photos": ["images/hist-noel2018.jpg"] },
-          { "titre": "Ottmarsheim", "legende": "", "photos": [] },
-          { "titre": "Cité Hof · Riedisheim", "legende": "", "photos": ["images/hist-noel2014.jpg"] },
-          { "titre": "Parc de la Commanderie · Rixheim", "legende": "", "photos": [] }
+          {
+            "titre": "Turckheim",
+            "legende": "",
+            "photos": [
+              "images/noel.jpg"
+            ]
+          },
+          {
+            "titre": "Saint-Nicolas · Riedisheim",
+            "legende": "",
+            "photos": [
+              "images/hist-noel2018.jpg"
+            ]
+          },
+          {
+            "titre": "Ottmarsheim",
+            "legende": "",
+            "photos": []
+          },
+          {
+            "titre": "Cité Hof · Riedisheim",
+            "legende": "",
+            "photos": [
+              "images/hist-noel2014.jpg"
+            ]
+          },
+          {
+            "titre": "Parc de la Commanderie · Rixheim",
+            "legende": "",
+            "photos": []
+          }
         ]
       },
       {
         "groupe": "Marché de Pâques",
         "periode": "2014",
         "items": [
-          { "titre": "Cité Hof · Riedisheim", "legende": "", "photos": [] }
+          {
+            "titre": "Cité Hof · Riedisheim",
+            "legende": "",
+            "photos": []
+          }
         ]
       }
     ],
@@ -62,24 +144,58 @@
         "groupe": "À l’atelier",
         "periode": "2015 – 2024",
         "items": [
-          { "titre": "Décors sur porcelaine & céramique", "legende": "", "photos": ["images/hist-atelier.jpg"] },
-          { "titre": "Saison à l’atelier", "legende": "", "photos": ["images/hist-saison2016.jpg"] }
+          {
+            "titre": "Décors sur porcelaine & céramique",
+            "legende": "",
+            "photos": [
+              "images/hist-atelier.jpg"
+            ]
+          },
+          {
+            "titre": "Saison à l’atelier",
+            "legende": "",
+            "photos": [
+              "images/hist-saison2016.jpg"
+            ]
+          }
         ]
       },
       {
         "groupe": "Adultes",
         "periode": "2014 – 2018",
         "items": [
-          { "titre": "À l’atelier & en association", "legende": "", "photos": ["images/hist-stages-adultes.jpg"] },
-          { "titre": "Céramique pour débutants", "legende": "", "photos": ["images/coupe.jpg"] }
+          {
+            "titre": "À l’atelier & en association",
+            "legende": "",
+            "photos": [
+              "images/hist-stages-adultes.jpg"
+            ]
+          },
+          {
+            "titre": "Céramique pour débutants",
+            "legende": "",
+            "photos": [
+              "images/coupe.jpg"
+            ]
+          }
         ]
       },
       {
         "groupe": "Enfants",
         "periode": "2014 – 2015",
         "items": [
-          { "titre": "Découverte de la terre", "legende": "", "photos": ["images/hist-stages-enfants.jpg"] },
-          { "titre": "Stage d’été · Hochstatt", "legende": "", "photos": [] }
+          {
+            "titre": "Découverte de la terre",
+            "legende": "",
+            "photos": [
+              "images/hist-stages-enfants.jpg"
+            ]
+          },
+          {
+            "titre": "Stage d’été · Hochstatt",
+            "legende": "",
+            "photos": []
+          }
         ]
       }
     ]
