@@ -36,16 +36,16 @@
         "legende": "Broderie d’Alsace"
       },
       {
+        "src": "images/vase.jpg",
+        "legende": "Vase graminées"
+      },
+      {
         "src": "images/ete.jpg",
         "legende": "Été ensoleillé"
       },
       {
-        "src": "images/noel.jpg",
+        "src": "images/1789038868213-dscn4151.jpg",
         "legende": "Noël sous le sapin"
-      },
-      {
-        "src": "images/vase.jpg",
-        "legende": "Vase graminées"
       }
     ],
     "ceramique": [
