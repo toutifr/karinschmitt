@@ -20,10 +20,6 @@
         "legende": "Expresso"
       },
       {
-        "src": "images/japonaise.jpg",
-        "legende": "Parfum d’Asie"
-      },
-      {
         "src": "images/noir-et-blanc.jpg",
         "legende": "Couleur Noir & Blanc"
       },
@@ -46,6 +42,10 @@
       {
         "src": "images/1789039045712--dsc7301.jpg",
         "legende": "noel sous le sapin"
+      },
+      {
+        "src": "images/1789050823898-img-3492.jpg",
+        "legende": ""
       }
     ],
     "ceramique": [
@@ -67,7 +67,7 @@
     "evenements": [
       {
         "groupe": "Écomusée d’Alsace",
-        "periode": "2014 – 2023",
+        "periode": "2011 – 2025",
         "items": [
           {
             "titre": "Les Arts du feu",
@@ -140,7 +140,7 @@
     "stages": [
       {
         "groupe": "À l’atelier",
-        "periode": "2015 – 2024",
+        "periode": "2010 – 2024",
         "items": [
           {
             "titre": "Décors sur porcelaine & céramique",
