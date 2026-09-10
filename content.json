@@ -50,16 +50,16 @@
     ],
     "ceramique": [
       {
-        "src": "images/poules.jpg",
-        "legende": "Les poules"
-      },
-      {
         "src": "images/oiseaux.jpg",
         "legende": "Oiseaux rigolos"
       },
       {
         "src": "images/coupe.jpg",
         "legende": "Coupes"
+      },
+      {
+        "src": "images/1789038756988-poule2.jpg",
+        "legende": "LES POULES"
       }
     ]
   },
