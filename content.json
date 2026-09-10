@@ -77,7 +77,8 @@
               "images/1789040316790-img-20221007-wa0009.jpg",
               "images/1789040328117-img-20221008-wa0004.jpg",
               "images/1789040353008-ecomusee-alsace-olivier-schmitt-12a-copie.jpg",
-              "images/1789040411955-2310-img2316-ema-artsdufeu08-photosgh-br.jpg"
+              "images/1789040411955-2310-img2316-ema-artsdufeu08-photosgh-br.jpg",
+              "images/1789041727644-chez-les-forgerons-dsa-6876.jpg"
             ]
           },
           {
@@ -147,8 +148,7 @@
             "photos": [
               "images/hist-atelier.jpg",
               "images/1789040773040-poissons.jpg",
-              "images/1789040784037-coeur-rouge.jpg",
-              "images/1789040854740-20221205-133958.jpg"
+              "images/1789040784037-coeur-rouge.jpg"
             ]
           },
           {
@@ -157,8 +157,7 @@
             "photos": [
               "images/hist-saison2016.jpg",
               "images/1789040965243-noel-enfants.jpg",
-              "images/1789041009053-boules-de-noel.jpg",
-              "images/1789041045429-photo.jpg"
+              "images/1789041009053-boules-de-noel.jpg"
             ]
           }
         ]
@@ -186,14 +185,16 @@
             "photos": [
               "images/coupe.jpg",
               "images/1789041393529-img-1068.jpg",
-              "images/1789041423579-img-1128.jpg"
+              "images/1789041423579-img-1128.jpg",
+              "images/1789041439704-20151109-181724-.jpg",
+              "images/1789041476410-img-1110.jpg"
             ]
           }
         ]
       },
       {
         "groupe": "Enfants",
-        "periode": "2014 – 2015",
+        "periode": "2012 - 2021",
         "items": [
           {
             "titre": "Découverte de la terre",
@@ -201,11 +202,6 @@
             "photos": [
               "images/hist-stages-enfants.jpg"
             ]
-          },
-          {
-            "titre": "Stage d’été · Hochstatt",
-            "legende": "",
-            "photos": []
           }
         ]
       }
