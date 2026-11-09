@@ -104,13 +104,16 @@
           {
             "titre": "Ottmarsheim",
             "legende": "",
-            "photos": []
+            "photos": [
+              "images/1794240224092-marche-noel-ridedisheim-2014-olivier-schmitt-3095.jpg",
+              "images/1794240343228-photo-2.jpg",
+              "images/1794240406873-dsc02132.jpg"
+            ]
           },
           {
             "titre": "Turckheim",
             "legende": "",
             "photos": [
-              "images/noel.jpg",
               "images/1794231449564-20221204-110908.jpg",
               "images/1794231477981-20221223-111020.jpg",
               "images/1794231509255-20221223-185408.jpg",
