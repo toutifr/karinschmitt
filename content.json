@@ -89,11 +89,6 @@
               "images/1794236331062-expo.jpg",
               "images/1794236422567-musique.jpg"
             ]
-          },
-          {
-            "titre": "Boutique de l’Écomusée · Ungersheim",
-            "legende": "",
-            "photos": []
           }
         ]
       },
@@ -160,17 +155,6 @@
           },
           {
             "titre": "Parc de la Commanderie · Rixheim",
-            "legende": "",
-            "photos": []
-          }
-        ]
-      },
-      {
-        "groupe": "Marché de Pâques",
-        "periode": "2014",
-        "items": [
-          {
-            "titre": "Cité Hof · Riedisheim",
             "legende": "",
             "photos": []
           }
